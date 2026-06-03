@@ -31,14 +31,15 @@ We simulate customer, account, and transaction data, stream changes in real time
 
 ## 🛠️ Tech Stack
 
-| Tool | Purpose |
-|------|---------|
-| ❄️ **Snowflake** | Cloud Data Warehouse |
-| 🔁 **DBT** | Transformations, testing, snapshots (SCD Type-2) |
-| 🌀 **Apache Airflow** | Orchestration & DAG scheduling |
-| 📨 **Apache Kafka + Debezium** | Real-time streaming & CDC |
-| 🪣 **MinIO** | S3-compatible object storage |
-| 🐘 **Postgres** | Source OLTP system |
-| 🐍 **Python (Faker)** | Data simulation |
-| 🐳 **Docker & docker-compose** | Containerized setup |
-| 🔧 **Git & GitHub Actions** | CI/CD workflows |
+- ❄️ **Snowflake** → Cloud Data Warehouse
+- 🔁 **DBT** → Transformations, testing, snapshots (SCD Type-2)
+- 🌀 **Apache Airflow** → Orchestration & DAG scheduling
+- 📨 **Apache Kafka + Debezium** → Real-time streaming & CDC
+- 🪣 **MinIO** → S3-compatible object storage
+- 🐘 **Postgres** → Source OLTP system
+- 🐍 **Python (Faker)** → Data simulation
+- 🐳 **Docker & docker-compose** → Containerized setup
+- 🔧 **Git & GitHub Actions** → CI/CD workflows
+
+## Key Features
+
