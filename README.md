@@ -43,3 +43,49 @@ We simulate customer, account, and transaction data, stream changes in real time
 
 ## Key Features
 
+- **PostgreSQL OLTP:** Source relational database with ACID guarantees (customers, accounts, transactions)
+- **Simulated banking system:** customers, accounts, and transactions
+- **Change Data Capture (CDC)** via Kafka + Debezium (capturing Postgres WAL)
+- **Raw → Staging → Fact/Dimension** models in DBT
+- **Snapshots for history tracking** (slowly changing dimensions)
+- **Automated pipeline orchestration** using Airflow
+- **CI/CD pipeline** with dbt tests + GitHub Action
+
+## Repository Structure
+
+## 📁 Repository Structure
+
+```plaintext
+banking-modern-datastack/
+├── .github/workflows/          # CI/CD pipelines (ci.yml, cd.yml)
+├── banking_dbt/                # DBT project
+│   ├── models/
+│   │   ├── staging/            # Staging models
+│   │   ├── marts/              # Facts & dimensions
+│   │   └── sources.yml
+│   ├── snapshots/              # SCD2 snapshots
+│   └── dbt_project.yml
+│
+├── consumer/
+│   └── kafka_to_minio.py
+│
+├── data-generator/             # Faker-based data simulator
+│   └── faker_generator.py
+│
+├── docker/
+│   └── dags/                   # Airflow DAGs, plugins, etc.
+│       ├── minio_to_snowflake.py
+│       └── scd_snapshots.py
+│
+├── kafka_debezium/             # Kafka connectors & CDC logic
+│   └── generate_and_post_connector.py
+│
+├── postgres/                   # Postgres schema (OLTP DDL & seeds)
+│   └── schema.sql
+│
+├── .gitignore
+├── docker-compose.yml          # Containerized infra
+├── dockerfile-airflow.dockerfile
+├── requirements.txt
+└── README.md
+```
