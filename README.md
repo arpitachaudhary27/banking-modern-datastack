@@ -51,8 +51,6 @@ We simulate customer, account, and transaction data, stream changes in real time
 - **Automated pipeline orchestration** using Airflow
 - **CI/CD pipeline** with dbt tests + GitHub Action
 
-## Repository Structure
-
 ## 📁 Repository Structure
 
 ```plaintext
@@ -89,3 +87,47 @@ banking-modern-datastack/
 ├── requirements.txt
 └── README.md
 ```
+
+## Step-by-step Implimentation
+
+### 1.Data Simulation
+
+- Generated synthetic banking data (customers, accounts, transactions) using **Faker**.
+- Inserted data into **PostgreSQL (OLTP)** so the system behaves like a real transactional database (ACID, constraints).
+- Controlled generation via config.yaml.
+
+### 2.Kafka / Debezium CDC
+
+- Set up **Kafka Connect & Debezium** to capture changes from **Postgres**.
+- Streamed CDC events into **MinIO**.
+
+### 3.Airflow Orchestration
+
+- Built DAGs to:
+    - Ingest **MinIO data → Snowflake (Bronze)**.
+    - Schedule **snapshots & incremental loads**.
+ 
+### 4.Snowflake Warehouse
+
+- Organized into **Bronze → Silver → Gold layers**.
+- Created **staging schemas** for ingestion.
+
+### 5.DBT Transformations
+
+- **Staging models** → cleaned source data.
+- **Dimension & fact models** → built marts.
+- **Snapshots** → tracked history of accounts & customers.
+
+### 6. CI/CD with GitHub Actions
+
+- **ci.yml** → Lint, dbt compile, run tests.
+- **cd.yml** → Deploy DAGs & dbt models on merge.
+
+## 📊 Final Deliverables
+
+- **Automated CDC pipeline** from Postgres → Snowflake
+- **DBT models** (facts, dimensions, snapshots)
+- **Orchestrated DAGs in Airflow**
+- **Synthetic banking dataset** for demos
+- **CI/CD workflows** ensuring reliability
+
