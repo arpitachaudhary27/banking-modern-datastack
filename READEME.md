@@ -19,4 +19,4 @@ We simulate customer, account, and transaction data, stream changes in real time
 
 ## 🏗️ Architecture
 
-![Architecture Diagram](.Downloads\real_time_banking_pipeline.png)
+![Architecture](./docs/real_time_banking_pipeline.png)
