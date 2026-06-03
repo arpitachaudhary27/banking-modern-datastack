@@ -19,7 +19,11 @@ We simulate customer, account, and transaction data, stream changes in real time
 👉 Think of it as a **real-world banking data ecosystem** built on modern data tools.
 
 ## 🏗️ Architecture
-![Architecture](./real_time_banking_pipeline.png)
+
+<p align="center">
+  <img src="./real_time_banking_pipeline.png" alt="Architecture Diagram" width="900"/>
+</p>
+
 
 ### Pipeline Flow:
 1.**Data Generator** → Simulates banking transactions, accounts & customers (via Faker).
